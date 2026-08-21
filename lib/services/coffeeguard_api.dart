@@ -21,7 +21,7 @@ class PredictionResult {
   factory PredictionResult.fromJson(Map<String, dynamic> json) {
     final probs = <String, double>{};
     (json['all_probabilities'] as Map<String, dynamic>? ?? {}).forEach(
-          (k, v) => probs[k] = (v as num).toDouble(),
+      (k, v) => probs[k] = (v as num).toDouble(),
     );
     return PredictionResult(
       predictedClass: json['predicted_class'] as String,
@@ -42,16 +42,14 @@ class ApiException implements Exception {
 
 /// Thin client for the CoffeeGuard FastAPI backend.
 ///
-/// Point [baseUrl] at your deployed API (e.g. your Hugging Face Space URL).
-/// Defaults to a local dev server for `flutter run` against
-/// `uvicorn app.main:app --reload` on your machine.
+/// Point [baseUrl] at the deployed API 
 class CoffeeGuardApi {
   final String baseUrl;
   final Duration timeout;
 
   CoffeeGuardApi({
-    this.baseUrl = 'https://YOUR_HF_USERNAME-coffeeguard.hf.space',
-    this.timeout = const Duration(seconds: 30),
+    this.baseUrl = 'https://coffeeguard-rapy.onrender.com',
+    this.timeout = const Duration(seconds: 75),
   });
 
   Future<PredictionResult> predict(File imageFile) async {
