@@ -6,11 +6,33 @@ allprojects {
 }
 
 rootProject.buildDir = "../build"
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+// Safely enforce Java 17 compatibility across all Android plugin subprojects
+subprojects {
+    plugins.withId('com.android.library') {
+        android {
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_17
+                targetCompatibility JavaVersion.VERSION_17
+            }
+        }
+    }
+    plugins.withId('com.android.application') {
+        android {
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_17
+                targetCompatibility JavaVersion.VERSION_17
+            }
+        }
+    }
 }
 
 tasks.register("clean", Delete) {
