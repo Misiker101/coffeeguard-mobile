@@ -46,17 +46,6 @@ class CoffeeGuardApi {
   final String baseUrl;
   final Duration timeout;
 
-  CoffeeGuardApi({
-    this.baseUrl = 'https://coffeeguard-rapy.onrender.com',
-    this.timeout = const Duration(seconds: 75),
-  });
-
-
-  MediaType _mediaTypeFor(String path) {
-    final lower = path.toLowerCase();
-    if (lower.endsWith('.png')) return MediaType('image', 'png');
-    return MediaType('image', 'jpeg');
-  }
 
   Future<PredictionResult> predict(File imageFile) async {
     final uri = Uri.parse('$baseUrl/predict');
