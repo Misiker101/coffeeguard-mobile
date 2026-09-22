@@ -19,19 +19,7 @@ class PredictionResult {
     required this.allProbabilities,
   });
 
-  factory PredictionResult.fromJson(Map<String, dynamic> json) {
-    final probs = <String, double>{};
-    (json['all_probabilities'] as Map<String, dynamic>? ?? {}).forEach(
-          (k, v) => probs[k] = (v as num).toDouble(),
-    );
-    return PredictionResult(
-      predictedClass: json['predicted_class'] as String,
-      confidence: (json['confidence'] as num).toDouble(),
-      careTip: json['care_tip'] as String? ?? '',
-      latencyMs: (json['latency_ms'] as num?)?.toDouble() ?? 0,
-      allProbabilities: probs,
-    );
-  }
+  
 }
 
 class ApiException implements Exception {
