@@ -35,7 +35,37 @@ class ResultScreen extends StatelessWidget {
                 child: Image.file(image, height: 240, fit: BoxFit.cover),
               ),
               const SizedBox(height: 20),
-              
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    children: [
+                      Icon(_statusIcon, color: _statusColor, size: 36),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              result.predictedClass,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.coffeeBrown,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              '${(result.confidence * 100).toStringAsFixed(1)}% confidence',
+                              style: TextStyle(color: AppColors.coffeeBrownLight),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(height: 16),
               Card(
                 child: Padding(
