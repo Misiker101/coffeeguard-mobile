@@ -90,51 +90,7 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Full breakdown',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.coffeeBrown,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      ...sortedProbs.map(
-                            (e) => Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(e.key),
-                                  Text('${(e.value * 100).toStringAsFixed(1)}%'),
-                                ],
-                              ),
-                              const SizedBox(height: 4),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(6),
-                                child: LinearProgressIndicator(
-                                  value: e.value,
-                                  minHeight: 6,
-                                  backgroundColor: AppColors.leafGreenLight,
-                                  color: AppColors.leafGreen,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              
               const SizedBox(height: 24),
               OutlinedButton.icon(
                 onPressed: () => Navigator.of(context).pop(),
